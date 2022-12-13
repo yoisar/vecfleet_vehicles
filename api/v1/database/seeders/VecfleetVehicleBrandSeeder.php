@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\VecfleetVehicleBrand;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,6 @@ class VecfleetVehicleBrandSeeder extends Seeder
      */
     public function run()
     {
-        //
+        VecfleetVehicleBrand::factory()->count(50)->create();
     }
 }
