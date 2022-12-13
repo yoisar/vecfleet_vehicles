@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('vecfleet_vehicles', function (Blueprint $table) {
             $table->id();
+            $table->timestamps();
             $table->integer('type');
             $table->smallInteger('wheels');
             $table->integer('brand');

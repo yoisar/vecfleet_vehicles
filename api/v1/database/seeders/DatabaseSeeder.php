@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             VecfleetVehicleTypeSeeder::class,
-            VecfleetVehicleBrandSeeder::class
+            VecfleetVehicleBrandSeeder::class,
+            VecfleetVehicleSeeder::class
         ]);
     }
 }
