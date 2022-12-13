@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class VecfleetVehicleBrand extends Model
 {
     use HasFactory;
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['vehicle_brand'];
 }
