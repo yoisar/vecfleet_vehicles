@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreVecfleetVehicleRequest;
 use App\Http\Requests\UpdateVecfleetVehicleRequest;
+use App\Http\Resources\VecfleetVehicleResource;
 use App\Models\VecfleetVehicle;
+use Illuminate\Http\Response;
 
 class VecfleetVehicleController extends Controller
 {
@@ -15,7 +17,7 @@ class VecfleetVehicleController extends Controller
      */
     public function index()
     {
-        //
+        return new VecfleetVehicleResource(VecfleetVehicle::all());
     }
 
     /**
