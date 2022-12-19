@@ -6,7 +6,7 @@ use App\Http\Requests\StoreVecfleetVehicleBrandRequest;
 use App\Http\Requests\UpdateVecfleetVehicleBrandRequest;
 use App\Models\VecfleetVehicleBrand;
 
-class VecfleetVehicleBrandController extends Controller
+class VecfleetVehicleBrandController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,12 @@ class VecfleetVehicleBrandController extends Controller
      */
     public function index()
     {
-        //
+        $brands = VecfleetVehicleBrand::all();
+        try {
+            return $this->sendResponse($brands, 'Vehicles List');
+        } catch (\Exception $e) {            
+            return $this->sendError($e->getMessage(), [], $e->getCode());
+        }
     }
 
     /**
