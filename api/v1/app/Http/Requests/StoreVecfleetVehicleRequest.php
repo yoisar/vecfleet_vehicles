@@ -13,7 +13,7 @@ class StoreVecfleetVehicleRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,13 @@ class StoreVecfleetVehicleRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'id_type' => 'required',
+            'wheels' => 'required',
+            'id_brand' => 'required',
+            'model' => 'required',
+            'patent' => 'required',
+            'chassis' => 'required',
+            'km_traveled' => 'required'
         ];
     }
 }

@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Http\Requests\StoreVecfleetVehicleRequest;
 use App\Http\Requests\UpdateVecfleetVehicleRequest;
-use App\Http\Resources\VecfleetVehicleResource;
+// use App\Http\Resources\VecfleetVehicleResource;
 use App\Models\VecfleetVehicle;
-use Validator;
+use Illuminate\Http\Client\Request;
+use Illuminate\Support\Facades\DB;
+// use Validator;
 
-class VecfleetVehicleController extends Controller
+class VecfleetVehicleController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -17,13 +20,12 @@ class VecfleetVehicleController extends Controller
      */
     public function index()
     {
-
         $vehicles = VecfleetVehicle::all();
-        return response()->json([
-            "success" => true,
-            "message" => "Vehicles List",
-            "data" => $vehicles
-        ]);
+        try {
+            return $this->sendResponse($vehicles, 'Vehicles List');
+        } catch (\Exception $e) {            
+            return $this->sendError($e->getMessage(), [], $e->getCode());
+        }
     }
 
     /**
@@ -34,36 +36,18 @@ class VecfleetVehicleController extends Controller
      */
     public function store(StoreVecfleetVehicleRequest $request)
     {
-        $input = $request->all();
-        $validator = $this->validator($input);
-        if ($validator->fails()) {
-            return $this->sendError('Validation Error.', $validator->errors());
+        DB::beginTransaction();
+        try {
+            $input = $request->all();
+            $vehicle = VecfleetVehicle::create($input);
+            return $this->sendResponse($vehicle, 'Vehicle updated successfully');
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            return $this->sendError($e->getMessage(), [], $e->getCode());
         }
-        $vehicle = VecfleetVehicle::create($input);
-        return response()->json([
-            "success" => true,
-            "message" => "Vehicle created successfully.",
-            "data" => $vehicle
-        ]);
     }
-    /**
-     * Validation 
-     *
-     * @param [type] $input
-     * @return Validator
-     */
-    private function validator($input)
-    {
-        return Validator::make($input, [
-            'type' => 'required',
-            'wheels' => 'required',
-            'brand' => 'required',
-            'model' => 'required',
-            'patent' => 'required',
-            'chassis' => 'required',
-            'km_traveled' => 'required'
-        ]);
-    }
+
     /**
      * Display the specified resource.
      *
@@ -72,15 +56,16 @@ class VecfleetVehicleController extends Controller
      */
     public function show($id)
     {
-        $vehicle = VecfleetVehicle::find($id);
-        if (is_null($vehicle)) {
-            return $this->sendError('Vehicle not found.');
+        try {
+            $vehicle = VecfleetVehicle::find($id);
+            if (is_null($vehicle)) {
+                return $this->sendError('Vehicle not found');
+            } else {
+                return $this->sendResponse($vehicle, 'Vehicle retrieved successfully');
+            }
+        } catch (\Exception $e) {
+            return $this->sendError($e->getMessage(), [], $e->getCode());
         }
-        return response()->json([
-            "success" => true,
-            "message" => "Vehicle retrieved successfully.",
-            "data" => $vehicle
-        ]);
     }
 
     /**
@@ -92,24 +77,29 @@ class VecfleetVehicleController extends Controller
      */
     public function update(UpdateVecfleetVehicleRequest $request, VecfleetVehicle $vehicle)
     {
-        $input = $request->all();
-        $validator = $this->validator($input);
-        if ($validator->fails()) {
-            return $this->sendError('Validation Error.', $validator->errors());
+        DB::beginTransaction();
+        try {
+            $input = $request->all();
+            $validator = $this->validator($input);
+            if ($validator->fails()) {
+                return $this->sendError('Validation Error.', $validator->errors());
+            } else {
+                $vehicle->type = $input['id_type'];
+                $vehicle->wheels = $input['wheels'];
+                $vehicle->brand = $input['id_brand'];
+                $vehicle->model = $input['model'];
+                $vehicle->patent = $input['patent'];
+                $vehicle->chassis = $input['chassis'];
+                $vehicle->km_traveled = $input['km_traveled'];
+                //
+                $vehicle->save();
+                return $this->sendResponse($vehicle, 'Vehicle updated successfully');
+                DB::commit();
+            }
+        } catch (\Exception $e) {
+            DB::rollback();
+            return $this->sendError($e->getMessage(), [], $e->getCode());
         }
-        $vehicle->type = $input['type'];
-        $vehicle->wheels = $input['wheels'];
-        $vehicle->brand = $input['brand'];
-        $vehicle->model = $input['model'];
-        $vehicle->patent = $input['patent'];
-        $vehicle->chassis = $input['chassis'];
-        $vehicle->km_traveled = $input['km_traveled'];
-        $vehicle->save();
-        return response()->json([
-            "success" => true,
-            "message" => "vehicle updated successfully.",
-            "data" => $vehicle
-        ]);
     }
 
     /**
@@ -120,11 +110,12 @@ class VecfleetVehicleController extends Controller
      */
     public function destroy(VecfleetVehicle $vehicle)
     {
-        $vehicle->delete();
-        return response()->json([
-            "success" => true,
-            "message" => "Vehicle deleted successfully.",
-            "data" => $vehicle
-        ]);
+        try {
+            $vehicle->delete();
+            return $this->sendResponse($vehicle, 'Vehicle deleted successfully');
+        } catch (\Exception $e) {
+            DB::rollback();
+            return $this->sendError($e->getMessage(), [], $e->getCode());
+        }
     }
 }
