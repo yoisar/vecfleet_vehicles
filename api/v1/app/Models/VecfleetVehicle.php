@@ -21,6 +21,6 @@ class VecfleetVehicle extends Model
      */
     public function vehicleType()
     {
-        return $this->hasOne(VecfleetVehicleType::class,'type','type');
+        return $this->hasOne(VecfleetVehicleType::class,'id','id_type');
     }
 }
