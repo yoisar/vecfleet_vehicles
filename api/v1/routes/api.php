@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\VecfleetVehicleBrandController;
 use App\Http\Controllers\VecfleetVehicleController;
+use App\Http\Controllers\VecfleetVehicleTypeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 // Vehicles endpoint
 Route::resource('vehicles', VecfleetVehicleController::class);
+// Types endpoint
+Route::resource('types', VecfleetVehicleTypeController::class);
+// Brands endpoint
+Route::resource('brands', VecfleetVehicleBrandController::class);

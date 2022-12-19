@@ -6,7 +6,7 @@ use App\Http\Requests\StoreVecfleetVehicleTypeRequest;
 use App\Http\Requests\UpdateVecfleetVehicleTypeRequest;
 use App\Models\VecfleetVehicleType;
 
-class VecfleetVehicleTypeController extends Controller
+class VecfleetVehicleTypeController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,12 @@ class VecfleetVehicleTypeController extends Controller
      */
     public function index()
     {
-        //
+        $types = VecfleetVehicleType::all();
+        try {
+            return $this->sendResponse($types, 'Vehicles List');
+        } catch (\Exception $e) {
+            return $this->sendError($e->getMessage(), [], $e->getCode());
+        }
     }
 
     /**
@@ -45,9 +50,18 @@ class VecfleetVehicleTypeController extends Controller
      * @param  \App\Models\VecfleetVehicleType  $vecfleetVehicleType
      * @return \Illuminate\Http\Response
      */
-    public function show(VecfleetVehicleType $vecfleetVehicleType)
+    public function show($id)
     {
-        //
+        try {
+            $vehicle = VecfleetVehicleType::find($id);
+            if (is_null($vehicle)) {
+                return $this->sendError('Type not found');
+            } else {
+                return $this->sendResponse($vehicle, 'Type retrieved successfully');
+            }
+        } catch (\Exception $e) {
+            return $this->sendError($e->getMessage(), [], $e->getCode());
+        }
     }
 
     /**

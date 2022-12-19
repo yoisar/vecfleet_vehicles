@@ -6,7 +6,7 @@ use App\Http\Requests\StoreVecfleetVehicleBrandRequest;
 use App\Http\Requests\UpdateVecfleetVehicleBrandRequest;
 use App\Models\VecfleetVehicleBrand;
 
-class VecfleetVehicleBrandController extends Controller
+class VecfleetVehicleBrandController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,12 @@ class VecfleetVehicleBrandController extends Controller
      */
     public function index()
     {
-        //
+        $brands = VecfleetVehicleBrand::all();
+        try {
+            return $this->sendResponse($brands, 'Vehicles List');
+        } catch (\Exception $e) {
+            return $this->sendError($e->getMessage(), [], $e->getCode());
+        }
     }
 
     /**
@@ -45,9 +50,18 @@ class VecfleetVehicleBrandController extends Controller
      * @param  \App\Models\VecfleetVehicleBrand  $vecfleetVehicleBrand
      * @return \Illuminate\Http\Response
      */
-    public function show(VecfleetVehicleBrand $vecfleetVehicleBrand)
+    public function show($id)
     {
-        //
+        try {
+            $brand = VecfleetVehicleBrand::find($id);
+            if (is_null($brand)) {
+                return $this->sendError('Brand not found');
+            } else {
+                return $this->sendResponse($brand, 'Brand retrieved successfully');
+            }
+        } catch (\Exception $e) {
+            return $this->sendError($e->getMessage(), [], $e->getCode());
+        }
     }
 
     /**
