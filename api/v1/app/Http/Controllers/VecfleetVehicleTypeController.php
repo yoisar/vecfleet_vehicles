@@ -18,7 +18,7 @@ class VecfleetVehicleTypeController extends BaseController
         $types = VecfleetVehicleType::all();
         try {
             return $this->sendResponse($types, 'Vehicles List');
-        } catch (\Exception $e) {            
+        } catch (\Exception $e) {
             return $this->sendError($e->getMessage(), [], $e->getCode());
         }
     }
@@ -50,9 +50,18 @@ class VecfleetVehicleTypeController extends BaseController
      * @param  \App\Models\VecfleetVehicleType  $vecfleetVehicleType
      * @return \Illuminate\Http\Response
      */
-    public function show(VecfleetVehicleType $vecfleetVehicleType)
+    public function show($id)
     {
-        //
+        try {
+            $vehicle = VecfleetVehicleType::find($id);
+            if (is_null($vehicle)) {
+                return $this->sendError('Type not found');
+            } else {
+                return $this->sendResponse($vehicle, 'Type retrieved successfully');
+            }
+        } catch (\Exception $e) {
+            return $this->sendError($e->getMessage(), [], $e->getCode());
+        }
     }
 
     /**
