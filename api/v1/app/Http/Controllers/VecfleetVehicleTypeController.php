@@ -6,7 +6,7 @@ use App\Http\Requests\StoreVecfleetVehicleTypeRequest;
 use App\Http\Requests\UpdateVecfleetVehicleTypeRequest;
 use App\Models\VecfleetVehicleType;
 
-class VecfleetVehicleTypeController extends Controller
+class VecfleetVehicleTypeController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,12 @@ class VecfleetVehicleTypeController extends Controller
      */
     public function index()
     {
-        //
+        $types = VecfleetVehicleType::all();
+        try {
+            return $this->sendResponse($types, 'Vehicles List');
+        } catch (\Exception $e) {            
+            return $this->sendError($e->getMessage(), [], $e->getCode());
+        }
     }
 
     /**
