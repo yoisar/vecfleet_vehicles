@@ -7,6 +7,7 @@ use App\Http\Requests\StoreVecfleetVehicleRequest;
 use App\Http\Requests\UpdateVecfleetVehicleRequest;
 // use App\Http\Resources\VecfleetVehicleResource;
 use App\Models\VecfleetVehicle;
+use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\DB;
 // use Validator;
 
@@ -57,7 +58,7 @@ class VecfleetVehicleController extends BaseController
     public function show($id)
     {
         try {
-            $vehicle = VecfleetVehicle::find($id)->vehicleType()->get();
+            $vehicle = VecfleetVehicle::find($id);
             if (is_null($vehicle)) {
                 return $this->sendError('Vehicle not found');
             } else {
