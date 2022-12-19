@@ -13,5 +13,5 @@ class VecfleetVehicleType extends Model
      *
      * @var array
      */
-    protected $fillable = ['vehicle_type'];
+    protected $fillable = ['type'];
 }
