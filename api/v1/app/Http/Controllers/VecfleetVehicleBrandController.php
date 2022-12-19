@@ -18,7 +18,7 @@ class VecfleetVehicleBrandController extends BaseController
         $brands = VecfleetVehicleBrand::all();
         try {
             return $this->sendResponse($brands, 'Vehicles List');
-        } catch (\Exception $e) {            
+        } catch (\Exception $e) {
             return $this->sendError($e->getMessage(), [], $e->getCode());
         }
     }
@@ -50,9 +50,18 @@ class VecfleetVehicleBrandController extends BaseController
      * @param  \App\Models\VecfleetVehicleBrand  $vecfleetVehicleBrand
      * @return \Illuminate\Http\Response
      */
-    public function show(VecfleetVehicleBrand $vecfleetVehicleBrand)
+    public function show($id)
     {
-        //
+        try {
+            $brand = VecfleetVehicleBrand::find($id);
+            if (is_null($brand)) {
+                return $this->sendError('Brand not found');
+            } else {
+                return $this->sendResponse($brand, 'Brand retrieved successfully');
+            }
+        } catch (\Exception $e) {
+            return $this->sendError($e->getMessage(), [], $e->getCode());
+        }
     }
 
     /**
