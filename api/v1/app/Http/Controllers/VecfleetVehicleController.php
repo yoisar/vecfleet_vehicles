@@ -23,8 +23,7 @@ class VecfleetVehicleController extends BaseController
         $vehicles = VecfleetVehicle::all();
         try {
             return $this->sendResponse($vehicles, 'Vehicles List');
-        } catch (\Exception $e) {
-            DB::rollback();
+        } catch (\Exception $e) {            
             return $this->sendError($e->getMessage(), [], $e->getCode());
         }
     }
