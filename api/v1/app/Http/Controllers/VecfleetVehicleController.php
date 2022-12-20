@@ -20,7 +20,7 @@ class VecfleetVehicleController extends BaseController
      */
     public function index()
     {
-        $vehicles = VecfleetVehicle::all();
+        $vehicles = VecfleetVehicle::with(['type','brand'])->get();
         try {
             return $this->sendResponse($vehicles, 'Vehicles List');
         } catch (\Exception $e) {            
@@ -84,9 +84,9 @@ class VecfleetVehicleController extends BaseController
             if ($validator->fails()) {
                 return $this->sendError('Validation Error.', $validator->errors());
             } else {
-                $vehicle->type = $input['type_id'];
+                $vehicle->type = $input['id_type'];
                 $vehicle->wheels = $input['wheels'];
-                $vehicle->brand = $input['brand_id'];
+                $vehicle->brand = $input['id_brand'];
                 $vehicle->model = $input['model'];
                 $vehicle->patent = $input['patent'];
                 $vehicle->chassis = $input['chassis'];
