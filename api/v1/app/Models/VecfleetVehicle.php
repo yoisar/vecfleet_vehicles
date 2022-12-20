@@ -17,10 +17,21 @@ class VecfleetVehicle extends Model
 
 
     /**
-     * Get the car's owner.
+     * get vehucle type
+     *
+     * @return void
      */
     public function type()
     {
-        return $this->hasOne(VecfleetVehicleType::class,'id','type_id');
+        return $this->belongsTo(VecfleetVehicleType::class);
+    }
+    /**
+     * get vehicle brand 
+     *
+     * @return void
+     */
+    public function brand()
+    {
+        return $this->belongsTo(VecfleetVehicleBrand::class);
     }
 }
