@@ -21,9 +21,9 @@ class VecfleetVehicleFactory extends Factory
         $this->faker->addProvider(new Fakecar($this->faker));
         $vehicle = $this->faker->vehicleArray();
         return [
-            'id_type' => rand(1, 50),
+            'type_id' => rand(1, 50),
             'wheels' => $this->faker->vehicleDoorCount,
-            'id_brand' => rand(1, 50),
+            'brand_id' => rand(1, 50),
             'model' =>  $vehicle['model'],
             'patent' => $this->faker->vehicleRegistration('[A-Z]{2}-[0-9]{5}'),
             'chassis' => str_replace(' ', '_', $this->faker->vehicleType),
