@@ -26,9 +26,3 @@ Route::resource('vehicles', VecfleetVehicleController::class);
 Route::resource('types', VecfleetVehicleTypeController::class);
 // Brands endpoint
 Route::resource('brands', VecfleetVehicleBrandController::class);
-// Vehicles endpoint with parameters
-// /vehicles?_end=10&_order=desc&_sort=id&_start=0&
-// Route::get('vechiles', 'App\Http\Controllers\VecfleetVehicleController@index');
-// vehicle types endpoint with query string parameters
-// /types?_end=10&_start=0&
-// Route::get('types', 'App\Http\Controllers\VecfleetVehicleTypeController@index');
