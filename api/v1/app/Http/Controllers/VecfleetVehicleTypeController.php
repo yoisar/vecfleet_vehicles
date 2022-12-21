@@ -17,9 +17,11 @@ class VecfleetVehicleTypeController extends BaseController
     public function index(Request $request)
     {
         try {
-
-            $types = VecfleetVehicleType::all();
-
+            if ($request->get('id') !== null) {
+                $types = VecfleetVehicleType::find($request->get('id'));
+            } else {
+                $types = VecfleetVehicleType::all();
+            }
             return $this->sendResponse($types, 'Vehicles List');
         } catch (\Exception $e) {
             return $this->sendError($e->getMessage(), [], $e->getCode());
