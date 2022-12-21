@@ -17,19 +17,7 @@ class VecfleetVehicleBrandController extends BaseController
     public function index(Request $request)
     {
         try {
-            if ($request->get('_end') !== null) {
-                $limit = $request->get('_end');
-                $order = $request->get('_order') ? $request->get('_order') : 'asc';
-                $sort = $request->get('_sort') ?  $request->get('_sort') : 'id';
-                $offset = $request->get('_start') ? $request->get('_start') : 0;
-                // retireve ordered and limit vehicles list
-                $brands = VecfleetVehicleBrand::orderBy($sort, $order)
-                    ->offset($offset)
-                    ->limit($limit)
-                    ->get();
-            } else {
-                $brands = VecfleetVehicleBrand::all();
-            }
+            $brands = VecfleetVehicleBrand::all();
             return $this->sendResponse($brands, 'Brands List');
         } catch (\Exception $e) {
             return $this->sendError($e->getMessage(), [], $e->getCode());
