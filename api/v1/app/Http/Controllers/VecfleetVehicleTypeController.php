@@ -17,16 +17,8 @@ class VecfleetVehicleTypeController extends BaseController
     public function index(Request $request)
     {
         try {
-            if ($request->get('_end') !== null) {
-                $limit = $request->get('_end');
-                $order = $request->get('_order') ? $request->get('_order') : 'asc';
-                $sort = $request->get('_sort') ?  $request->get('_sort') : 'id';
-                $offset = $request->get('_start') ? $request->get('_start') : 0;                
-                // retireve ordered and limit vehicles list
-                $types = VecfleetVehicleType::orderBy($sort, $order)
-                    ->offset($offset)
-                    ->limit($limit)
-                    ->get();
+            if ($request->get('id') !== null) {
+                $types = VecfleetVehicleType::find($request->get('id'));
             } else {
                 $types = VecfleetVehicleType::all();
             }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreVecfleetVehicleBrandRequest;
 use App\Http\Requests\UpdateVecfleetVehicleBrandRequest;
 use App\Models\VecfleetVehicleBrand;
+use Symfony\Component\HttpFoundation\Request;
 
 class VecfleetVehicleBrandController extends BaseController
 {
@@ -13,11 +14,15 @@ class VecfleetVehicleBrandController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $brands = VecfleetVehicleBrand::all();
         try {
-            return $this->sendResponse($brands, 'Vehicles List');
+            if ($request->get('id') !== null) {
+                $brands = VecfleetVehicleBrand::find($request->get('id'));
+            } else {
+                $brands = VecfleetVehicleBrand::all();
+            }
+            return $this->sendResponse($brands, 'Brands List');
         } catch (\Exception $e) {
             return $this->sendError($e->getMessage(), [], $e->getCode());
         }
