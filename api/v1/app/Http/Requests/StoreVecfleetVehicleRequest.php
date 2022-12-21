@@ -24,9 +24,9 @@ class StoreVecfleetVehicleRequest extends FormRequest
     public function rules()
     {
         return [
-            'id_type' => 'required',
+            'type_id' => 'required',
             'wheels' => 'required',
-            'id_brand' => 'required',
+            'brand_id' => 'required',
             'model' => 'required',
             'patent' => 'required',
             'chassis' => 'required',
