@@ -1,0 +1,31 @@
+
+  GET|HEAD        / .............................................................................................................................................. 
+  POST            _ignition/execute-solution ....................................... ignition.executeSolution › Spatie\LaravelIgnition › ExecuteSolutionController
+  GET|HEAD        _ignition/health-check ................................................... ignition.healthCheck › Spatie\LaravelIgnition › HealthCheckController
+  POST            _ignition/update-config ................................................ ignition.updateConfig › Spatie\LaravelIgnition › UpdateConfigController
+  GET|HEAD        api/brands ................................................................................. brands.index › VecfleetVehicleBrandController@index
+  POST            api/brands ................................................................................. brands.store › VecfleetVehicleBrandController@store
+  GET|HEAD        api/brands/create ........................................................................ brands.create › VecfleetVehicleBrandController@create
+  GET|HEAD        api/brands/{brand} ........................................................................... brands.show › VecfleetVehicleBrandController@show
+  PUT|PATCH       api/brands/{brand} ....................................................................... brands.update › VecfleetVehicleBrandController@update
+  DELETE          api/brands/{brand} ..................................................................... brands.destroy › VecfleetVehicleBrandController@destroy
+  GET|HEAD        api/brands/{brand}/edit ...................................................................... brands.edit › VecfleetVehicleBrandController@edit
+  GET|HEAD        api/types .................................................................................... types.index › VecfleetVehicleTypeController@index
+  POST            api/types .................................................................................... types.store › VecfleetVehicleTypeController@store
+  GET|HEAD        api/types/create ........................................................................... types.create › VecfleetVehicleTypeController@create
+  GET|HEAD        eeeeapi/types/{type} ............................................................................... types.show › VecfleetVehicleTypeController@show
+  PUT|PATCH       api/types/{type} ........................................................................... types.update › VecfleetVehicleTypeController@update
+  DELETE          api/types/{type} ......................................................................... types.destroy › VecfleetVehicleTypeController@destroy
+  GET|HEAD        api/types/{type}/edit .......................................................................... types.edit › VecfleetVehicleTypeController@edit
+  GET|HEAD        api/user ....................................................................................................................................... 
+  GET|HEAD        api/vehicles .................................................................................. vehicles.index › VecfleetVehicleController@index
+  POST            api/vehicles .................................................................................. vehicles.store › VecfleetVehicleController@store
+  GET|HEAD        api/vehicles/create ......................................................................... vehicles.create › VecfleetVehicleController@create
+  GET|HEAD        api/vehicles/{vehicle} .......................................................................... vehicles.show › VecfleetVehicleController@show
+  PUT|PATCH       api/vehicles/{vehicle} ...................................................................... vehicles.update › VecfleetVehicleController@update
+  DELETE          api/vehicles/{vehicle} .................................................................... vehicles.destroy › VecfleetVehicleController@destroy
+  GET|HEAD        api/vehicles/{vehicle}/edit ..................................................................... vehicles.edit › VecfleetVehicleController@edit
+  GET|HEAD        sanctum/csrf-cookie .......................................................... sanctum.csrf-cookie › Laravel\Sanctum › CsrfCookieController@show
+
+                                                                                                                                               Showing [27] routes
+
