@@ -98,7 +98,7 @@ class VecfleetVehicleController extends BaseController
             if ($validator->fails()) {
                 return $this->sendError('Validation Error.', $validator->errors());
             } else {
-                $vehicle->type = $input['id_type'];
+                $vehicle->type = $input['type_id'];
                 $vehicle->wheels = $input['wheels'];
                 $vehicle->brand = $input['id_brand'];
                 $vehicle->model = $input['model'];
