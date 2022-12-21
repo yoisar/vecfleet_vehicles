@@ -13,23 +13,7 @@ services:
       - MARIADB_DATABASE=vecfleet
     ports:
       - '8901:3306'
-    # db 
-  vecfleet-vehicles-frontend:
-    container_name: vecfleet_vehicles_frontend
-    build: .
-    volumes:
-      - './frontend:/app'
-    # environment:
-    #   # is recommended only for development.
-    #   # - ALLOW_EMPTY_PASSWORD
-    #   - ALLOW_EMPTY_PASSWORD=yes
-    #   - MARIADB_USER=vecfleet
-    #   - MARIADB_DATABASE=vecfleet
-    ports:
-      - '8900:3000'
-    depends_on:
-      - vecfleet-vehicles-mariadb
-  # app
+  # API 
   vecfleet_vehicles-api:
     container_name: vecfleet_vehicles_api
     image: docker.io/bitnami/laravel:9
@@ -50,6 +34,22 @@ services:
     restart: always
     image: phpmyadmin
     ports:
-      - 8904:80
+      - 8903:80
     environment:
       PMA_HOSTS: vecfleet-vehicles-mariadb
+  # Web APP 
+  vecfleet-vehicles-frontend:
+    container_name: vecfleet_vehicles_frontend
+    build: .
+    volumes:
+      - './refine-frontend:/app'
+    # environment:
+    #   # is recommended only for development.
+    #   # - ALLOW_EMPTY_PASSWORD
+    #   - ALLOW_EMPTY_PASSWORD=yes
+    #   - MARIADB_USER=vecfleet
+    #   - MARIADB_DATABASE=vecfleet
+    ports:
+      - '8900:3000'
+    depends_on:
+      - vecfleet_vehicles-api
