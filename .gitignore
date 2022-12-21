@@ -20,3 +20,4 @@ yarn-error.log
 .DS_Store
 api/v1/routes.txt
 node_modules/
+data/
