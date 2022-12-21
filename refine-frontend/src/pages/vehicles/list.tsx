@@ -8,10 +8,7 @@ import {
   Space,
   EditButton,
   DeleteButton,
-  // useSelect,
   TagField,
-  // FilterDropdown,
-  // Select,
   ShowButton,
 } from "@pankod/refine-antd";
 import { IVehicle, IVType } from "interfaces";
