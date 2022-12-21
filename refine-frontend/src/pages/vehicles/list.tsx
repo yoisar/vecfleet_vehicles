@@ -26,17 +26,6 @@ export const VList: React.FC<IResourceComponentsProps> = () => {
     ],
   });
 
-  // const typesIds =
-  //   tableProps?.dataSource?.map((item) => item.type.id) ?? [];
-  // const { data: typesData, isLoading } = useMany<IVType>({
-  //   resource: "types",
-  //   ids: typesIds,
-  //   queryOptions: {
-  //     enabled: typesIds.length > 0,
-  //   },
-  // });
-
-
   return (
     <List>
       <Table {...tableProps} rowKey="id">
