@@ -13,14 +13,25 @@ class VecfleetVehicle extends Model
      *
      * @var array
      */
-    protected $fillable = ['id_type', 'wheels', 'id_brand', 'model', 'patent', 'chassis', 'km_traveled'];
+    protected $fillable = ['type_id', 'wheels', 'brand_id', 'model', 'patent', 'chassis', 'km_traveled'];
 
 
     /**
-     * Get the car's owner.
+     * get vehucle type
+     *
+     * @return void
      */
-    public function vehicleType()
+    public function type()
     {
-        return $this->hasOne(VecfleetVehicleType::class,'id','id_type');
+        return $this->belongsTo(VecfleetVehicleType::class);
+    }
+    /**
+     * get vehicle brand 
+     *
+     * @return void
+     */
+    public function brand()
+    {
+        return $this->belongsTo(VecfleetVehicleBrand::class);
     }
 }

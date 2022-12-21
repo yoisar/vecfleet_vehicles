@@ -7,8 +7,9 @@ use App\Http\Requests\StoreVecfleetVehicleRequest;
 use App\Http\Requests\UpdateVecfleetVehicleRequest;
 // use App\Http\Resources\VecfleetVehicleResource;
 use App\Models\VecfleetVehicle;
-use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpFoundation\Request;
+
 // use Validator;
 
 class VecfleetVehicleController extends BaseController
@@ -18,12 +19,25 @@ class VecfleetVehicleController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $vehicles = VecfleetVehicle::all();
         try {
+            if ($request->get('_end') !== null) {
+                $limit = $request->get('_end');
+                $order = $request->get('_order') ? $request->get('_order') : 'asc';
+                $sort = $request->get('_sort') ?  $request->get('_sort') : 'id';
+                $offset = $request->get('_start') ? $request->get('_start') : 0;
+                // retireve ordered and limit vehicles list
+                $vehicles = VecfleetVehicle::with(['type', 'brand'])->orderBy($sort, $order)
+                    ->offset($offset)
+                    ->limit($limit)
+                    ->get();
+            } else {
+                // retireve all vehicles
+                $vehicles = VecfleetVehicle::with(['type', 'brand'])->get();
+            }
             return $this->sendResponse($vehicles, 'Vehicles List');
-        } catch (\Exception $e) {            
+        } catch (\Exception $e) {
             return $this->sendError($e->getMessage(), [], $e->getCode());
         }
     }
