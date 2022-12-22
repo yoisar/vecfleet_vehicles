@@ -17,7 +17,11 @@ class VecfleetVehicleBrandController extends BaseController
     public function index(Request $request)
     {
         try {
-            $brands = VecfleetVehicleBrand::all();
+            if ($request->get('id') !== null) {
+                $brands = VecfleetVehicleBrand::find($request->get('id'));
+            } else {
+                $brands = VecfleetVehicleBrand::all();
+            }
             return $this->sendResponse($brands, 'Brands List');
         } catch (\Exception $e) {
             return $this->sendError($e->getMessage(), [], $e->getCode());
