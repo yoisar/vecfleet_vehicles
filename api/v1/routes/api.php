@@ -45,13 +45,18 @@ Route::post('/sanctum/token', function (Request $request) {
 Route::post('/login', [AuthController::class, 'login']);
 
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::get('/user', function (Request $request) {
     return $request->user();
 });
-// Vehicles endpoint
-Route::middleware('auth:sanctum')->resource('vehicles', VecfleetVehicleController::class);
-Route::middleware('auth:sanctum')->patch('/vehicles/{id}', 'App\Http\Controllers\VecfleetVehicleController@update')->name('vehicles.update');
-// Types endpoint
-Route::resource('types', VecfleetVehicleTypeController::class);
-// Brands endpoint
-Route::resource('brands', VecfleetVehicleBrandController::class);
+
+// protected routes
+Route::middleware(['auth:sanctum'])->group(function () {
+
+    // Vehicles endpoint
+    Route::apiResource('vehicles', VecfleetVehicleController::class);
+    // Route::patch('/vehicles/{id}', 'App\Http\Controllers\VecfleetVehicleController@update')->name('vehicles.update');;
+    // Types endpoint
+    Route::apiResource('types', VecfleetVehicleTypeController::class);;
+    // Brands endpoint
+    Route::apiResource('brands', VecfleetVehicleBrandController::class);;
+});
