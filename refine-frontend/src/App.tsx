@@ -14,22 +14,31 @@ const axiosInstance = axios.create();
 import authProvider from "./auth-provider";
 //  api url
 const API_URL = "http://localhost:8902/api";
+
+
+// {
+//   "access_token": "1|0wmCWhz41g695Eh0P7fZjNBzKdX377SmgsfoHYxu",
+//   "token_type": "Bearer"
+// }
+
 //
 axiosInstance.interceptors.request.use(
   // Here we can perform any function we'd like on the request
   (request: AxiosRequestConfig) => {
+    const access_token = "2|r1KUCwArVtU0Cj0IUqoEP8DXRQlKLni5Mq5dTFDP";
+    const token_type = "Bearer";
     // Retrieve the token from local storage
-    const token = JSON.parse(localStorage.getItem("auth"));
+    // const token = token_type;
     // Check if the header property exists
     if (request.headers) {
       // Set the Authorization header if it exists
       request.headers[
         "Authorization"
-      ] = `Bearer ${token}`;
+      ] = `Bearer ${access_token}`;
     } else {
       // Create the headers property if it does not exist
       request.headers = {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${access_token}`,
       };
     }
 
@@ -43,24 +52,25 @@ const mockUsers = [
 ];
 
 
-return (
-  <Refine
-    authProvider={authProvider}
-    dataProvider={dataProvider(API_URL)}
-    notificationProvider={notificationProvider}
-    Layout={Layout}
-    ReadyPage={ReadyPage}
-    catchAll={<ErrorComponent />}
-    routerProvider={routerProvider}
-    resources={[
-      {
-        name: "vehicles",
-        list: VList,
-        edit: VEdit
-      },
-    ]}
-  />
-);
+const App = () => {
+  return (
+    <Refine
+      authProvider={authProvider}
+      dataProvider={dataProvider(API_URL)}
+      notificationProvider={notificationProvider}
+      Layout={Layout}
+      ReadyPage={ReadyPage}
+      catchAll={<ErrorComponent />}
+      routerProvider={routerProvider}
+      resources={[
+        {
+          name: "vehicles",
+          list: VList,
+          edit: VEdit
+        },
+      ]}
+    />
+  );
 }
 
 export default App;
