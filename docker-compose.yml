@@ -11,6 +11,8 @@ services:
       - ALLOW_EMPTY_PASSWORD=yes
       - MARIADB_USER=vecfleet
       - MARIADB_DATABASE=vecfleet
+    volumes:
+      - './data:/bitnami/mariadb/data'
     ports:
       - '8901:3306'
   # API 
