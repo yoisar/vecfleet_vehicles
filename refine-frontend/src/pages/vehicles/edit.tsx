@@ -34,7 +34,7 @@ export const VEdit: React.FC<IResourceComponentsProps> = () => {
       <Form {...formProps} layout="vertical">
         <Form.Item
           label="Type"
-          name={["type", "type"]}
+          name="type_id"
           rules={[
             {
               required: true,
@@ -56,7 +56,7 @@ export const VEdit: React.FC<IResourceComponentsProps> = () => {
         </Form.Item>
         <Form.Item
           label="Brand"
-          name={["brand", "brand"]}
+          name="brand_id"
           rules={[
             {
               required: true,
