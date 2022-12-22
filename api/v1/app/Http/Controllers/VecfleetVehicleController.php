@@ -89,7 +89,7 @@ class VecfleetVehicleController extends BaseController
      * @param  \App\Models\VecfleetVehicle  $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateVecfleetVehicleRequest $request, VecfleetVehicle $vehicle)
+    public function update(UpdateVecfleetVehicleRequest $request,  $id)
     {
         DB::beginTransaction();
         try {
@@ -98,9 +98,10 @@ class VecfleetVehicleController extends BaseController
             if ($validator->fails()) {
                 return $this->sendError('Validation Error.', $validator->errors());
             } else {
-                $vehicle->type = $input['id_type'];
+                $vehicle = VecfleetVehicle::find($id);
+                $vehicle->type = $input['type_id'];
                 $vehicle->wheels = $input['wheels'];
-                $vehicle->brand = $input['id_brand'];
+                $vehicle->brand = $input['brand_id'];
                 $vehicle->model = $input['model'];
                 $vehicle->patent = $input['patent'];
                 $vehicle->chassis = $input['chassis'];
