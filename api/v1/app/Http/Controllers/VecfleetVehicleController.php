@@ -71,7 +71,7 @@ class VecfleetVehicleController extends BaseController
     public function show($id)
     {
         try {
-            $vehicle = VecfleetVehicle::find($id);
+            $vehicle = VecfleetVehicle::with(['type', 'brand'])->find($id);
             if (is_null($vehicle)) {
                 return $this->sendError('Vehicle not found');
             } else {
