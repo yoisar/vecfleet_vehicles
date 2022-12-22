@@ -17,11 +17,16 @@ export const VEdit: React.FC<IResourceComponentsProps> = () => {
 
   const { selectProps: typeSelectProps } = useSelect<IVType>({
     resource: "types",
-    defaultValue: queryResult?.data?.data.type_id,
+    optionLabel: "type",
+    optionValue: "id",
+    defaultValue: queryResult?.data?.data.type.id,
   });
   const { selectProps: brandSelectProps } = useSelect<IVBrand>({
     resource: "brands",
-    defaultValue: queryResult?.data?.data.brand_id,
+    optionLabel: "brand",
+    optionValue: "id",
+    defaultValue: queryResult?.data?.data.brand.id,
+
   });
 
   return (
@@ -29,7 +34,7 @@ export const VEdit: React.FC<IResourceComponentsProps> = () => {
       <Form {...formProps} layout="vertical">
         <Form.Item
           label="Type"
-          name={["type", "id"]}
+          name={["type", "type"]}
           rules={[
             {
               required: true,
@@ -51,7 +56,7 @@ export const VEdit: React.FC<IResourceComponentsProps> = () => {
         </Form.Item>
         <Form.Item
           label="Brand"
-          name={["brand", "id"]}
+          name={["brand", "brand"]}
           rules={[
             {
               required: true,
