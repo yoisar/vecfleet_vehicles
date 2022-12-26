@@ -50,7 +50,7 @@ Route::get('/user', function (Request $request) {
 });
 
 // protected routes
-Route::middleware(['auth:sanctum'])->group(function () {
+// Route::middleware(['auth:sanctum'])->group(function () {
 
     // Vehicles endpoint
     Route::apiResource('vehicles', VecfleetVehicleController::class);
@@ -59,4 +59,4 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::apiResource('types', VecfleetVehicleTypeController::class);;
     // Brands endpoint
     Route::apiResource('brands', VecfleetVehicleBrandController::class);;
-});
+// });
