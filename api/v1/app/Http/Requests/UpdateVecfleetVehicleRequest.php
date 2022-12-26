@@ -13,7 +13,7 @@ class UpdateVecfleetVehicleRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
