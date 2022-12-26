@@ -14,7 +14,7 @@ import {
   Select,
   FilterDropdown,
 } from "@pankod/refine-antd";
-import { IVehicle, IVType } from "interfaces";
+import { IVBrand, IVehicle, IVType } from "interfaces";
 
 export const VList: React.FC<IResourceComponentsProps> = () => {
   const { tableProps, sorter } = useTable<IVehicle>({
@@ -25,10 +25,15 @@ export const VList: React.FC<IResourceComponentsProps> = () => {
       },
     ],
   });
-  const { selectProps: typesSelectProps } = useSelect<IVType>({
-    resource: "types",
-    // label: "Type",
-    // name: "type_id"
+  const { selectProps: brandSelectPorp } = useSelect<IVBrand>({
+    resource: "brands",
+    optionLabel: "Brand",
+    optionValue: "id",
+  });
+  const { selectProps: modelSelectProps } = useSelect<IVehicle>({
+    resource: "vehicles",
+    optionLabel: "Model",
+    optionValue: "model",
   });
   return (
     <List>
@@ -46,25 +51,14 @@ export const VList: React.FC<IResourceComponentsProps> = () => {
           key="type_id"
           title="Type"
           render={(value) => <TextField value={value} />}
-          // filter by type
-          filterDropdown={(props) => (
-            <FilterDropdown {...props}>
-              <Select
-              style={{ minWidth: 200 }}
-              mode="multiple"
-              placeholder="Select Type"
-              // label="Type"
-              {...typesSelectProps}
-              />
-            </FilterDropdown>
-          )}
+          defaultSortOrder={getDefaultSortOrder("type_id", sorter)}
         />
         <Table.Column
           dataIndex="wheels"
           key="wheels"
           title="Wheels"
           render={(value) => <TextField value={value} />}
-          defaultSortOrder={getDefaultSortOrder("id", sorter)}
+          defaultSortOrder={getDefaultSortOrder("wheels", sorter)}
           sorter
         />
         <Table.Column
@@ -72,8 +66,19 @@ export const VList: React.FC<IResourceComponentsProps> = () => {
           key="brand_id"
           title="Brand"
           render={(value) => <TextField value={value} />}
-          defaultSortOrder={getDefaultSortOrder("id", sorter)}
+          defaultSortOrder={getDefaultSortOrder("brand_id", sorter)}
           sorter
+          // filter by brand
+          filterDropdown={(props) => (
+            <FilterDropdown {...props}>
+              <Select
+                style={{ minWidth: 200 }}
+                mode="multiple"
+                placeholder="Select Type"
+                {...brandSelectPorp}
+              />
+            </FilterDropdown>
+          )}
         />
         <Table.Column
           dataIndex="model"
@@ -82,6 +87,19 @@ export const VList: React.FC<IResourceComponentsProps> = () => {
           render={(value) => <TextField value={value} />}
           defaultSortOrder={getDefaultSortOrder("model", sorter)}
           sorter
+          // filter by model
+          filterDropdown={(props) => (
+            <FilterDropdown {...props}>
+              <Select
+                style={{ minWidth: 200 }}
+                mode="multiple"
+                placeholder="Select Model"
+                // label="Type"
+                {...modelSelectProps}
+              />
+            </FilterDropdown>
+          )}
+        />
         />
 
         <Table.Column
@@ -97,7 +115,7 @@ export const VList: React.FC<IResourceComponentsProps> = () => {
           key="chassis"
           title="Chassis"
           render={(value) => <TagField value={value} />}
-          defaultSortOrder={getDefaultSortOrder("patent", sorter)}
+          defaultSortOrder={getDefaultSortOrder("chassis", sorter)}
           sorter
         />
         <Table.Column
