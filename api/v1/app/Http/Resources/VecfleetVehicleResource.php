@@ -16,11 +16,13 @@ class VecfleetVehicleResource extends JsonResource
     {
         // return parent::toArray($request);
         return [
-            'type' => $this->type,
-            'wheels' => $this->name,
-            'brand' => $this->email,
+            'type_id' => $this->type_id,
+            'wheels' => $this->wheels,
+            'brand_id' => $this->brand_id,
             'chassis' => $this->chassis,
-            'km_traveled' => $this->km_traveled
+            'km_traveled' => $this->km_traveled,
+            'model' => $this->model,
+            'patent' => $this->patent
         ];
     }
 }
