@@ -8,7 +8,7 @@ import {
 
 import dataProvider from "@pankod/refine-simple-rest";
 import routerProvider from "@pankod/refine-react-router-v6";
-import { VEdit, VList } from "pages/vehicles";
+import { VCreate, VEdit, VList, VShow } from "pages/vehicles";
 import axios from "axios";
 const axiosInstance = axios.create();
 // import authProvider from "./auth-provider";
@@ -66,7 +66,9 @@ const App = () => {
         {
           name: "vehicles",
           list: VList,
-          edit: VEdit
+          edit: VEdit,
+          create: VCreate,
+          show: VShow,
         },
       ]}
     />
