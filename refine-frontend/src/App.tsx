@@ -11,7 +11,7 @@ import routerProvider from "@pankod/refine-react-router-v6";
 import { VEdit, VList } from "pages/vehicles";
 import axios from "axios";
 const axiosInstance = axios.create();
-import authProvider from "./auth-provider";
+// import authProvider from "./auth-provider";
 //  api url
 const API_URL = "http://localhost:8902/api";
 
@@ -22,29 +22,29 @@ const API_URL = "http://localhost:8902/api";
 // }
 
 //
-axiosInstance.interceptors.request.use(
-  // Here we can perform any function we'd like on the request
-  (request: AxiosRequestConfig) => {
-    const access_token = "2|r1KUCwArVtU0Cj0IUqoEP8DXRQlKLni5Mq5dTFDP";
-    const token_type = "Bearer";
-    // Retrieve the token from local storage
-    // const token = token_type;
-    // Check if the header property exists
-    if (request.headers) {
-      // Set the Authorization header if it exists
-      request.headers[
-        "Authorization"
-      ] = `Bearer ${access_token}`;
-    } else {
-      // Create the headers property if it does not exist
-      request.headers = {
-        Authorization: `Bearer ${access_token}`,
-      };
-    }
+// axiosInstance.interceptors.request.use(
+//   // Here we can perform any function we'd like on the request
+//   (request: AxiosRequestConfig) => {
+//     const access_token = "2|BNfly6GDNxqJL3hcm9DSwotUZ2AY8VQEQYUus8TA";
+//     const token_type = "Bearer";
+//     // Retrieve the token from local storage
+//     // const token = token_type;
+//     // Check if the header property exists
+//     if (request.headers) {
+//       // Set the Authorization header if it exists
+//       request.headers[
+//         "Authorization"
+//       ] = `Bearer ${access_token}`;
+//     } else {
+//       // Create the headers property if it does not exist
+//       request.headers = {
+//         Authorization: `Bearer ${access_token}`,
+//       };
+//     }
 
-    return request;
-  },
-);
+//     return request;
+//   },
+// );
 
 
 const mockUsers = [
@@ -55,7 +55,7 @@ const mockUsers = [
 const App = () => {
   return (
     <Refine
-      authProvider={authProvider}
+      // authProvider={authProvider}
       dataProvider={dataProvider(API_URL)}
       notificationProvider={notificationProvider}
       Layout={Layout}
