@@ -54,8 +54,8 @@ class VecfleetVehicleController extends BaseController
         try {
             $input = $request->all();
             $vehicle = VecfleetVehicle::create($input);
-            return $this->sendResponse($vehicle, 'Vehicle updated successfully');
             DB::commit();
+            return $this->sendResponse($vehicle, 'Vehicle updated successfully');
         } catch (\Exception $e) {
             DB::rollback();
             return $this->sendError($e->getMessage());
@@ -94,23 +94,24 @@ class VecfleetVehicleController extends BaseController
         DB::beginTransaction();
         try {
             $input = $request->all();
-            $validator = $this->validator($input);
-            if ($validator->fails()) {
-                return $this->sendError('Validation Error.', $validator->errors());
-            } else {
+            // $validator = $this->validator($input);
+            // if ($validator->fails()) {
+            //     return $this->sendError('Validation Error.', $validator->errors());
+            // } else {
                 $vehicle = VecfleetVehicle::find($id);
-                $vehicle->type = $input['type_id'];
+                $vehicle->type_id = $input['type_id'];
                 $vehicle->wheels = $input['wheels'];
-                $vehicle->brand = $input['brand_id'];
+                $vehicle->brand_id = $input['brand_id'];
                 $vehicle->model = $input['model'];
                 $vehicle->patent = $input['patent'];
                 $vehicle->chassis = $input['chassis'];
                 $vehicle->km_traveled = $input['km_traveled'];
                 //
                 $vehicle->save();
-                return $this->sendResponse($vehicle, 'Vehicle updated successfully');
                 DB::commit();
-            }
+                return $this->sendResponse($vehicle, 'Vehicle updated successfully');
+                
+            // }
         } catch (\Exception $e) {
             DB::rollback();
             return $this->sendError($e->getMessage());
