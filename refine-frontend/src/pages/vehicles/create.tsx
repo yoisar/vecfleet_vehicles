@@ -10,21 +10,43 @@ import {
 
 import MDEditor from "@uiw/react-md-editor";
 
-import { IPost, ICategory } from "interfaces";
+import { IPost, ICategory, IVType, IVehicle, IVBrand } from "interfaces";
 
-export const PostCreate: React.FC<IResourceComponentsProps> = () => {
-  const { formProps, saveButtonProps } = useForm<IPost>();
+export const VCreate: React.FC<IResourceComponentsProps> = () => {
+  const { formProps, saveButtonProps, queryResult } = useForm<IVehicle>();
 
-  const { selectProps: categorySelectProps } = useSelect<ICategory>({
-    resource: "categories",
+  const { selectProps: typeSelectProps } = useSelect<IVType>({
+    resource: "types",
+    optionLabel: "type",
+    optionValue: "id",
+    defaultValue: queryResult?.data?.data.type.id,
   });
+  const { selectProps: brandSelectProps } = useSelect<IVBrand>({
+    resource: "brands",
+    optionLabel: "brand",
+    optionValue: "id",
+    defaultValue: queryResult?.data?.data.brand.id,
+
+  });
+
 
   return (
     <Create saveButtonProps={saveButtonProps}>
-      <Form {...formProps} layout="vertical">
+     <Form {...formProps} layout="vertical">
         <Form.Item
-          label="Title"
-          name="title"
+          label="Type"
+          name="type_id"
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Select {...typeSelectProps} />
+        </Form.Item>
+        <Form.Item
+          label="Wheels"
+          name="wheels"
           rules={[
             {
               required: true,
@@ -34,54 +56,62 @@ export const PostCreate: React.FC<IResourceComponentsProps> = () => {
           <Input />
         </Form.Item>
         <Form.Item
-          label="Status"
-          name="status"
+          label="Brand"
+          name="brand_id"
           rules={[
             {
               required: true,
             },
           ]}
         >
-          <Select
-            options={[
-              {
-                label: "published",
-                value: "published",
-              },
-              {
-                label: "draft",
-                value: "draft",
-              },
-              {
-                label: "rejected",
-                value: "rejected",
-              },
-            ]}
-          />
+          <Select {...brandSelectProps} />
+        </Form.Item>
+        <Form.Item
+          label="Model"
+          name="model"
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="Patent"
+          name="patent"
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="Chassis"
+          name="chassis"
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="Km traveled"
+          name="km_traveled"
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Input />
         </Form.Item>
 
-        <Form.Item
-          label="Category"
-          name={["category", "id"]}
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        >
-          <Select {...categorySelectProps} />
-        </Form.Item>
-        <Form.Item
-          label="Content"
-          name="content"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        >
-          <MDEditor data-color-mode="light" />
-        </Form.Item>
+
       </Form>
     </Create>
   );
