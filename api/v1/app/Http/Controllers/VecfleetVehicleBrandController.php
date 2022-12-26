@@ -17,6 +17,11 @@ class VecfleetVehicleBrandController extends BaseController
     public function index(Request $request)
     {
         try {
+
+            $brand_like = $request->get('Brand_like') ? $request->get('Brand_like') : '';
+            if ($brand_like) {
+                $brands = VecfleetVehicleBrand::where('brand', 'like', "%brand_like%");
+            }
             if ($request->get('id') !== null) {
                 $brands = VecfleetVehicleBrand::find($request->get('id'));
             } else {
