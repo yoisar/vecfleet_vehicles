@@ -10,6 +10,9 @@ import {
   DeleteButton,
   TagField,
   ShowButton,
+  useSelect,
+  Select,
+  FilterDropdown,
 } from "@pankod/refine-antd";
 import { IVehicle, IVType } from "interfaces";
 
@@ -22,7 +25,11 @@ export const VList: React.FC<IResourceComponentsProps> = () => {
       },
     ],
   });
-
+  const { selectProps: typesSelectProps } = useSelect<IVType>({
+    resource: "types",
+    // label: "Type",
+    // name: "type_id"
+  });
   return (
     <List>
       <Table {...tableProps} rowKey="id">
@@ -39,6 +46,18 @@ export const VList: React.FC<IResourceComponentsProps> = () => {
           key="type_id"
           title="Type"
           render={(value) => <TextField value={value} />}
+          // filter by type
+          filterDropdown={(props) => (
+            <FilterDropdown {...props}>
+              <Select
+              style={{ minWidth: 200 }}
+              mode="multiple"
+              placeholder="Select Type"
+              // label="Type"
+              {...typesSelectProps}
+              />
+            </FilterDropdown>
+          )}
         />
         <Table.Column
           dataIndex="wheels"
