@@ -38,7 +38,7 @@ class VecfleetVehicleController extends BaseController
             }
             return $this->sendResponse($vehicles, 'Vehicles List');
         } catch (\Exception $e) {
-            return $this->sendError($e->getMessage(), [], $e->getCode());
+            return $this->sendError($e->getMessage());
         }
     }
 
@@ -58,7 +58,7 @@ class VecfleetVehicleController extends BaseController
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
-            return $this->sendError($e->getMessage(), [], $e->getCode());
+            return $this->sendError($e->getMessage());
         }
     }
 
@@ -78,7 +78,7 @@ class VecfleetVehicleController extends BaseController
                 return $this->sendResponse($vehicle, 'Vehicle retrieved successfully');
             }
         } catch (\Exception $e) {
-            return $this->sendError($e->getMessage(), [], $e->getCode());
+            return $this->sendError($e->getMessage());
         }
     }
 
@@ -113,7 +113,7 @@ class VecfleetVehicleController extends BaseController
             }
         } catch (\Exception $e) {
             DB::rollback();
-            return $this->sendError($e->getMessage(), [], $e->getCode());
+            return $this->sendError($e->getMessage());
         }
     }
 
@@ -130,7 +130,7 @@ class VecfleetVehicleController extends BaseController
             return $this->sendResponse($vehicle, 'Vehicle deleted successfully');
         } catch (\Exception $e) {
             DB::rollback();
-            return $this->sendError($e->getMessage(), [], $e->getCode());
+            return $this->sendError($e->getMessage());
         }
     }
 }

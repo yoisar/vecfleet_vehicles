@@ -24,7 +24,7 @@ class VecfleetVehicleBrandController extends BaseController
             }
             return $this->sendResponse($brands, 'Brands List');
         } catch (\Exception $e) {
-            return $this->sendError($e->getMessage(), [], $e->getCode());
+            return $this->sendError($e->getMessage());
         }
     }
 
@@ -65,7 +65,7 @@ class VecfleetVehicleBrandController extends BaseController
                 return $this->sendResponse($brand, 'Brand retrieved successfully');
             }
         } catch (\Exception $e) {
-            return $this->sendError($e->getMessage(), [], $e->getCode());
+            return $this->sendError($e->getMessage());
         }
     }
 

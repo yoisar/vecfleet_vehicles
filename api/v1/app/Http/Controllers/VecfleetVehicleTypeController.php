@@ -24,7 +24,7 @@ class VecfleetVehicleTypeController extends BaseController
             }
             return $this->sendResponse($types, 'Vehicles List');
         } catch (\Exception $e) {
-            return $this->sendError($e->getMessage(), [], $e->getCode());
+            return $this->sendError($e->getMessage());
         }
     }
 
@@ -65,7 +65,7 @@ class VecfleetVehicleTypeController extends BaseController
                 return $this->sendResponse($vehicle, 'Type retrieved successfully');
             }
         } catch (\Exception $e) {
-            return $this->sendError($e->getMessage(), [], $e->getCode());
+            return $this->sendError($e->getMessage());
         }
     }
 
