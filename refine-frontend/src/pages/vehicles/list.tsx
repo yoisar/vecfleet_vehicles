@@ -100,7 +100,6 @@ export const VList: React.FC<IResourceComponentsProps> = () => {
             </FilterDropdown>
           )}
         />
-        />
 
         <Table.Column
           dataIndex="patent"
