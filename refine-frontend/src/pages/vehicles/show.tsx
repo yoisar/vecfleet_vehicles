@@ -1,38 +1,49 @@
 import { IResourceComponentsProps, useOne, useShow } from "@pankod/refine-core";
 import { Show, Typography, Tag, MarkdownField } from "@pankod/refine-antd";
 
-import { IPost, ICategory } from "interfaces";
+import { IPost, ICategory, IVehicle, IVType, IVBrand } from "interfaces";
 
 const { Title, Text } = Typography;
 
 export const VShow: React.FC<IResourceComponentsProps> = () => {
-  const { queryResult } = useShow<IPost>();
+  const { queryResult } = useShow<IVehicle>();
   const { data, isLoading } = queryResult;
   const record = data?.data;
 
-  const { data: categoryData } = useOne<ICategory>({
-    resource: "categories",
-    id: record?.category.id ?? "",
+  const { data: brandData } = useOne<IVBrand>({
+    resource: "brands",
+    id: record?.brand.id ?? "",
     queryOptions: {
-      enabled: !!record?.category.id,
+      enabled: !!record?.brand.id,
     },
   });
 
   return (
     <Show isLoading={isLoading}>
-      <Title level={5}>Title</Title>
-      <Text>{record?.title}</Text>
+      <Title level={5}>Type</Title>
+      <Text>{record?.type.type}</Text>
 
-      <Title level={5}>Status</Title>
+      <Title level={5}>Wheels</Title>
       <Text>
-        <Tag>{record?.status}</Tag>
+        <Tag>{record?.wheels}</Tag>
       </Text>
 
-      <Title level={5}>Category</Title>
-      <Text>{categoryData?.data.title}</Text>
+      <Title level={5}>Brand</Title>
+      <Text>{brandData?.data.brand}</Text>
+      
+      <Title level={5}>Model name</Title>
+      <Text>{record?.model}</Text>
+      
+      <Title level={5}>Patent</Title>
+      <Text>{record?.patent}</Text>
+      
+      <Title level={5}>Chassis</Title>
+      <Text>{record?.chassis}</Text>
+      
+      <Title level={5}>KM Traveled</Title>
+      <Text>{record?.km_traveled}</Text>
 
-      <Title level={5}>Content</Title>
-      <MarkdownField value={record?.content} />
+      
     </Show>
   );
 };
