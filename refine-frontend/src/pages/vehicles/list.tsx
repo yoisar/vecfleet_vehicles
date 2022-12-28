@@ -68,17 +68,6 @@ export const VList: React.FC<IResourceComponentsProps> = () => {
           render={(value) => <TextField value={value} />}
           defaultSortOrder={getDefaultSortOrder("brand_id", sorter)}
           sorter
-          // filter by brand
-          filterDropdown={(props) => (
-            <FilterDropdown {...props}>
-              <Select
-                style={{ minWidth: 200 }}
-                mode="multiple"
-                placeholder="Select Type"
-                {...brandSelectPorp}
-              />
-            </FilterDropdown>
-          )}
         />
         <Table.Column
           dataIndex="model"
@@ -87,18 +76,6 @@ export const VList: React.FC<IResourceComponentsProps> = () => {
           render={(value) => <TextField value={value} />}
           defaultSortOrder={getDefaultSortOrder("model", sorter)}
           sorter
-          // filter by model
-          filterDropdown={(props) => (
-            <FilterDropdown {...props}>
-              <Select
-                style={{ minWidth: 200 }}
-                mode="multiple"
-                placeholder="Select Model"
-                // label="Type"
-                {...modelSelectProps}
-              />
-            </FilterDropdown>
-          )}
         />
 
         <Table.Column
