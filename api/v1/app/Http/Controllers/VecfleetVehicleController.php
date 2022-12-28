@@ -31,35 +31,33 @@ class VecfleetVehicleController extends BaseController
                 $order = $request->get('_order') ? $request->get('_order') : 'asc';
                 $sort = $request->get('_sort') ?  $request->get('_sort') : 'id';
                 //Filters
-                // capture full url 
-                $query_string = $request->getQueryString();
-                $query_string = $request->fullUrl();
-                $parsedUrl = parse_url($query_string);
-                // print_r($parsedUrl);
-                //cpature model filter 
+                $where_raw = ' 1=1 ' ;
+                // capture model filter
                 $model = $request->get('model') ? $request->get('model') : '';
-                $separator = '&model=';
-                $strl = strlen($query_string);
-                $substring = substr($query_string, strpos($query_string,$separator, $strl));
-                $models_list = implode(',', explode($separator, $substring));
-                // echo "URL $query_string";// First model:  $model  //  Sunstring: $substring  //  Model List:  $models_list";
-                //capture brand filter
-                $brand_filter = $request->get('brand_id') ? $request->get('brand_id') : '';
-                //order
+                if ($model !== '') {
+                    $where_raw.= " AND (model like'%$model%')";
+                }
+                //capture brand_id filter
+                $brand_id = $request->get('brand_id') ? $request->get('brand_id')  : '';
+                if ($brand_id !== '') {
+                    $where_raw.= " AND (brand_id =  $brand_id)";
+                }
+                //capture sort fields 
                 $sort_array = explode(',', $sort);
                 if (count($sort_array) > 0) {
                     // retireve ordered and limit vehicles list
                     $vehicles = VecfleetVehicle::with(['type', 'brand'])
+                        ->whereRaw($where_raw)
                         ->orderByRaw("COALESCE($sort)")
-                        ->offset($offset)
-                        ->limit($limit)
+                        // ->offset($offset)
+                        // ->limit($limit)
                         ->get();
                 } else {
                     // retireve ordered and limit vehicles list
                     $vehicles = VecfleetVehicle::with(['type', 'brand'])
                         ->orderBy($sort, $order)
-                        ->offset($offset)
-                        ->limit($limit)
+                        // ->offset($offset)
+                        // ->limit($limit)
                         ->get();
                 }
             } else {
