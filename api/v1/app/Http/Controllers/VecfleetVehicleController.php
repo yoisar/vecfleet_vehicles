@@ -31,16 +31,16 @@ class VecfleetVehicleController extends BaseController
                 $order = $request->get('_order') ? $request->get('_order') : 'asc';
                 $sort = $request->get('_sort') ?  $request->get('_sort') : 'id';
                 //Filters
-                $where_raw = ' 1=1 ' ;
+                $where_raw = ' 1=1 ';
                 // capture model filter
                 $model = $request->get('model') ? $request->get('model') : '';
                 if ($model !== '') {
-                    $where_raw.= " AND (model like'%$model%')";
+                    $where_raw .= " AND (model like'%$model%')";
                 }
                 //capture brand_id filter
                 $brand_id = $request->get('brand_id') ? $request->get('brand_id')  : '';
                 if ($brand_id !== '') {
-                    $where_raw.= " AND (brand_id =  $brand_id)";
+                    $where_raw .= " AND (brand_id =  $brand_id)";
                 }
                 //capture sort fields 
                 $sort_array = explode(',', $sort);
@@ -152,9 +152,10 @@ class VecfleetVehicleController extends BaseController
      * @param  \App\Models\VecfleetVehicle  $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function destroy(VecfleetVehicle $vehicle)
+    public function destroy($id)
     {
         try {
+            $vehicle = VecfleetVehicle::findorFail($id);
             $vehicle->delete();
             return $this->sendResponse($vehicle, 'Vehicle deleted successfully');
         } catch (\Exception $e) {
