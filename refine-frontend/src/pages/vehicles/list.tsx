@@ -109,7 +109,7 @@ export const VList: React.FC<IResourceComponentsProps> = () => {
             <Table.Column
               dataIndex="model"
               key="model"
-              title="Model Name"
+              title="Model"
               render={(value) => <TextField value={value} />}
               defaultSortOrder={getDefaultSortOrder("model", sorter)}
               sorter

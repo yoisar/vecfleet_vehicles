@@ -31,7 +31,7 @@ export const VShow: React.FC<IResourceComponentsProps> = () => {
       <Title level={5}>Brand</Title>
       <Text>{brandData?.data.brand}</Text>
       
-      <Title level={5}>Model name</Title>
+      <Title level={5}>Model</Title>
       <Text>{record?.model}</Text>
       
       <Title level={5}>Patent</Title>
