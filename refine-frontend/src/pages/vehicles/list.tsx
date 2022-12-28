@@ -165,13 +165,7 @@ const Filter: React.FC<{ formProps: FormProps }> = ({ formProps }) => {
   });
 
   return (
-    <Form layout="vertical" {...formProps}>
-      <Form.Item label="Search" name="q">
-        <Input
-          placeholder="ID, Marca, Modelo"
-          prefix={<Icons.SearchOutlined />}
-        />
-      </Form.Item>
+    <Form layout="vertical" {...formProps}>     
       <Form.Item label="Model" name="model">
         <Input
           placeholder="Model"
