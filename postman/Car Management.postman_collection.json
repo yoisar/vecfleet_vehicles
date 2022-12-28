@@ -1,0 +1,966 @@
+{
+	"info": {
+		"_postman_id": "5925b72c-a3ce-4c3e-aa4e-56ce5dffeea2",
+		"name": "Car Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12703949"
+	},
+	"item": [
+		{
+			"name": "Vehicles Auth",
+			"item": [
+				{
+					"name": "User:: Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "admin@vecfleet.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Vecfleet Admin",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url_base}}/api/register",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						},
+						"description": "Register a user and create token access"
+					},
+					"response": [
+						{
+							"name": "User:: Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "admin@vecfleet.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "12345678",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "Vecfleet Admin",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8902/api/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8902",
+									"path": [
+										"api",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8902"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Dec 2022 13:43:37 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Dec 2022 13:43:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"1|hXe9haONTBdVpfDxIqWQW2kgk2083PCEuQH7xmw3\",\n    \"token_type\": \"Bearer\"\n}"
+						}
+					]
+				},
+				{
+					"name": "User:: Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "admin@vecfleet.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url_base}}/api/login",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						},
+						"description": "Login a registered user and get access token"
+					},
+					"response": [
+						{
+							"name": "User:: Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "admin@vecfleet.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "12345678",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8902/api/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8902",
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8902"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Dec 2022 13:43:51 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Dec 2022 13:43:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"2|6yCW6pPQkN91gYWwTvcOTGE14IoRMaDCEM4pzux5\",\n    \"token_type\": \"Bearer\"\n}"
+						}
+					]
+				},
+				{
+					"name": "User::Create token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "admin@vecfleet.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"type": "text"
+								},
+								{
+									"key": "device_name",
+									"value": "Vecfleet Team Mobile",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url_base}}/api/sanctum/token",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"api",
+								"sanctum",
+								"token"
+							]
+						},
+						"description": "Just create a token based on user information"
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Vehicles",
+			"item": [
+				{
+					"name": "Vehicles List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/api/vehicles",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"api",
+								"vehicles"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Vehicles List",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}/api/vehicles",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"api",
+										"vehicles"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8902"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Dec 2022 13:44:04 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Dec 2022 13:44:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "56"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 47,\n        \"brand_id\": 11,\n        \"wheels\": 4,\n        \"model\": \"Tiba\",\n        \"patent\": \"AY-63521\",\n        \"chassis\": \"MPV\",\n        \"km_traveled\": \"5782913\",\n        \"type\": {\n            \"id\": 47,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"GT\"\n        },\n        \"brand\": {\n            \"id\": 11,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Thunder Tiger\"\n        }\n    },\n    {\n        \"id\": 2,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 50,\n        \"brand_id\": 36,\n        \"wheels\": 2,\n        \"model\": \"Blackwood\",\n        \"patent\": \"GK-31669\",\n        \"chassis\": \"coupe\",\n        \"km_traveled\": \"5971213\",\n        \"type\": {\n            \"id\": 50,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"2E\"\n        },\n        \"brand\": {\n            \"id\": 36,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Dagger\"\n        }\n    },\n    {\n        \"id\": 3,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 25,\n        \"brand_id\": 8,\n        \"wheels\": 4,\n        \"model\": \"evA-4\",\n        \"patent\": \"KQ-53455\",\n        \"chassis\": \"sedan\",\n        \"km_traveled\": \"458222\",\n        \"type\": {\n            \"id\": 25,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"52\"\n        },\n        \"brand\": {\n            \"id\": 8,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Peugeot\"\n        }\n    },\n    {\n        \"id\": 4,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 8,\n        \"brand_id\": 37,\n        \"wheels\": 4,\n        \"model\": \"Mini\",\n        \"patent\": \"DD-87453\",\n        \"chassis\": \"coupe\",\n        \"km_traveled\": \"304327\",\n        \"type\": {\n            \"id\": 8,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"959\"\n        },\n        \"brand\": {\n            \"id\": 37,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Iran Khodro\"\n        }\n    },\n    {\n        \"id\": 5,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 10,\n        \"brand_id\": 31,\n        \"wheels\": 4,\n        \"model\": \"Cabrio\",\n        \"patent\": \"DH-54405\",\n        \"chassis\": \"SUV\",\n        \"km_traveled\": \"4475921\",\n        \"type\": {\n            \"id\": 10,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"Maestro\"\n        },\n        \"brand\": {\n            \"id\": 31,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"JMC\"\n        }\n    },\n    {\n        \"id\": 6,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 32,\n        \"brand_id\": 14,\n        \"wheels\": 4,\n        \"model\": \"30\",\n        \"patent\": \"KL-56162\",\n        \"chassis\": \"MPV\",\n        \"km_traveled\": \"4350614\",\n        \"type\": {\n            \"id\": 32,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"Ampera\"\n        },\n        \"brand\": {\n            \"id\": 14,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Jeep\"\n        }\n    },\n    {\n        \"id\": 7,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 37,\n        \"brand_id\": 47,\n        \"wheels\": 4,\n        \"model\": \"Steyr 55\",\n        \"patent\": \"AX-46180\",\n        \"chassis\": \"convertible\",\n        \"km_traveled\": \"541785\",\n        \"type\": {\n            \"id\": 37,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"Range Rover Sport\"\n        },\n        \"brand\": {\n            \"id\": 47,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Norster\"\n        }\n    },\n    {\n        \"id\": 8,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 33,\n        \"brand_id\": 22,\n        \"wheels\": 2,\n        \"model\": \"Super 88\",\n        \"patent\": \"DY-15649\",\n        \"chassis\": \"coupe\",\n        \"km_traveled\": \"3672194\",\n        \"type\": {\n            \"id\": 33,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"Simca\"\n        },\n        \"brand\": {\n            \"id\": 22,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Buick\"\n        }\n    },\n    {\n        \"id\": 9,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 17,\n        \"brand_id\": 39,\n        \"wheels\": 4,\n        \"model\": \"Cortez\",\n        \"patent\": \"PI-61440\",\n        \"chassis\": \"SUV\",\n        \"km_traveled\": \"3326720\",\n        \"type\": {\n            \"id\": 17,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"XLW\"\n        },\n        \"brand\": {\n            \"id\": 39,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Zimmer\"\n        }\n    },\n    {\n        \"id\": 10,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 1,\n        \"brand_id\": 11,\n        \"wheels\": 4,\n        \"model\": \"Atlantique\",\n        \"patent\": \"HE-91455\",\n        \"chassis\": \"hatchback\",\n        \"km_traveled\": \"710023\",\n        \"type\": {\n            \"id\": 1,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"Silver Wraith\"\n        },\n        \"brand\": {\n            \"id\": 11,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Thunder Tiger\"\n        }\n    },\n    {\n        \"id\": 11,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 33,\n        \"brand_id\": 35,\n        \"wheels\": 4,\n        \"model\": \"Gentra\",\n        \"patent\": \"UA-48136\",\n        \"chassis\": \"sedan\",\n        \"km_traveled\": \"707933\",\n        \"type\": {\n            \"id\": 33,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"Simca\"\n        },\n        \"brand\": {\n            \"id\": 35,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Smart\"\n        }\n    },\n    {\n        \"id\": 12,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 2,\n        \"brand_id\": 38,\n        \"wheels\": 4,\n        \"model\": \"Yugo Florida\",\n        \"patent\": \"FH-28044\",\n        \"chassis\": \"station_wagon\",\n        \"km_traveled\": \"5757929\",\n        \"type\": {\n            \"id\": 2,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"Attiva\"\n        },\n        \"brand\": {\n            \"id\": 38,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Gac\"\n        }\n    },\n    {\n        \"id\": 13,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 40,\n        \"brand_id\": 50,\n        \"wheels\": 6,\n        \"model\": \"tC\",\n        \"patent\": \"NK-58649\",\n        \"chassis\": \"convertible\",\n        \"km_traveled\": \"584613\",\n        \"type\": {\n            \"id\": 40,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"Gaucho\"\n        },\n        \"brand\": {\n            \"id\": 50,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Luxgen\"\n        }\n    },\n    {\n        \"id\": 14,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 39,\n        \"brand_id\": 28,\n        \"wheels\": 4,\n        \"model\": \"3\",\n        \"patent\": \"CD-11553\",\n        \"chassis\": \"sedan\",\n        \"km_traveled\": \"1665819\",\n        \"type\": {\n            \"id\": 39,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"Denem\"\n        },\n        \"brand\": {\n            \"id\": 28,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Koenigsegg\"\n        }\n    },\n    {\n        \"id\": 15,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 9,\n        \"brand_id\": 6,\n        \"wheels\": 2,\n        \"model\": \"Brooklands\",\n        \"patent\": \"IN-60911\",\n        \"chassis\": \"sedan\",\n        \"km_traveled\": \"3859999\",\n        \"type\": {\n            \"id\": 9,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"Bravada\"\n        },\n        \"brand\": {\n            \"id\": 6,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Isuzu\"\n        }\n    },\n    {\n        \"id\": 16,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 13,\n        \"brand_id\": 4,\n        \"wheels\": 4,\n        \"model\": \"Beast\",\n        \"patent\": \"TH-62297\",\n        \"chassis\": \"SUV\",\n        \"km_traveled\": \"1390332\",\n        \"type\": {\n            \"id\": 13,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"62\"\n        },\n        \"brand\": {\n            \"id\": 4,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Lexus\"\n        }\n    },\n    {\n        \"id\": 17,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 4,\n        \"brand_id\": 16,\n        \"wheels\": 2,\n        \"model\": \"MKZ\",\n        \"patent\": \"MW-70116\",\n        \"chassis\": \"sedan\",\n        \"km_traveled\": \"2675147\",\n        \"type\": {\n            \"id\": 4,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"Gentra\"\n        },\n        \"brand\": {\n            \"id\": 16,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Studebaker\"\n        }\n    },\n    {\n        \"id\": 18,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 20,\n        \"brand_id\": 31,\n        \"wheels\": 4,\n        \"model\": \"Attiva\",\n        \"patent\": \"YM-57261\",\n        \"chassis\": \"small\",\n        \"km_traveled\": \"1762041\",\n        \"type\": {\n            \"id\": 20,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"Soren\"\n        },\n        \"brand\": {\n            \"id\": 31,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"JMC\"\n        }\n    },\n    {\n        \"id\": 19,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 48,\n        \"brand_id\": 36,\n        \"wheels\": 4,\n        \"model\": \"Europa\",\n        \"patent\": \"DX-74532\",\n        \"chassis\": \"MPV\",\n        \"km_traveled\": \"2868172\",\n        \"type\": {\n            \"id\": 48,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"GT\"\n        },\n        \"brand\": {\n            \"id\": 36,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Dagger\"\n        }\n    },\n    {\n        \"id\": 20,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 35,\n        \"brand_id\": 46,\n        \"wheels\": 4,\n        \"model\": \"1000 MB\",\n        \"patent\": \"GL-80021\",\n        \"chassis\": \"station_wagon\",\n        \"km_traveled\": \"5579126\",\n        \"type\": {\n            \"id\": 35,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"RR\"\n        },\n        \"brand\": {\n            \"id\": 46,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"DS\"\n        }\n    },\n    {\n        \"id\": 21,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 26,\n        \"brand_id\": 6,\n        \"wheels\": 2,\n        \"model\": \"C3\",\n        \"patent\": \"GN-53453\",\n        \"chassis\": \"hatchback\",\n        \"km_traveled\": \"5588799\",\n        \"type\": {\n            \"id\": 26,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"City\"\n        },\n        \"brand\": {\n            \"id\": 6,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Isuzu\"\n        }\n    },\n    {\n        \"id\": 22,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 15,\n        \"brand_id\": 11,\n        \"wheels\": 4,\n        \"model\": \"DR5\",\n        \"patent\": \"MW-48271\",\n        \"chassis\": \"sedan\",\n        \"km_traveled\": \"2717653\",\n        \"type\": {\n            \"id\": 15,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"S70\"\n        },\n        \"brand\": {\n            \"id\": 11,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Thunder Tiger\"\n        }\n    },\n    {\n        \"id\": 23,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 19,\n        \"brand_id\": 41,\n        \"wheels\": 4,\n        \"model\": \"XLW\",\n        \"patent\": \"ZA-79101\",\n        \"chassis\": \"convertible\",\n        \"km_traveled\": \"5205704\",\n        \"type\": {\n            \"id\": 19,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"V5\"\n        },\n        \"brand\": {\n            \"id\": 41,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Yugo\"\n        }\n    },\n    {\n        \"id\": 24,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 32,\n        \"brand_id\": 37,\n        \"wheels\": 6,\n        \"model\": \"Perdana\",\n        \"patent\": \"SJ-01486\",\n        \"chassis\": \"hatchback\",\n        \"km_traveled\": \"3894844\",\n        \"type\": {\n            \"id\": 32,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"Ampera\"\n        },\n        \"brand\": {\n            \"id\": 37,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Iran Khodro\"\n        }\n    },\n    {\n        \"id\": 25,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 19,\n        \"brand_id\": 37,\n        \"wheels\": 4,\n        \"model\": \"evA-2\",\n        \"patent\": \"HH-93595\",\n        \"chassis\": \"convertible\",\n        \"km_traveled\": \"2944263\",\n        \"type\": {\n            \"id\": 19,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"V5\"\n        },\n        \"brand\": {\n            \"id\": 37,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Iran Khodro\"\n        }\n    },\n    {\n        \"id\": 26,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 9,\n        \"brand_id\": 45,\n        \"wheels\": 4,\n        \"model\": \"DG-C2\",\n        \"patent\": \"HH-00685\",\n        \"chassis\": \"hatchback\",\n        \"km_traveled\": \"5519567\",\n        \"type\": {\n            \"id\": 9,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"Bravada\"\n        },\n        \"brand\": {\n            \"id\": 45,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Peugeot\"\n        }\n    },\n    {\n        \"id\": 27,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 2,\n        \"brand_id\": 16,\n        \"wheels\": 4,\n        \"model\": \"Protege\",\n        \"patent\": \"YJ-96272\",\n        \"chassis\": \"station_wagon\",\n        \"km_traveled\": \"5749934\",\n        \"type\": {\n            \"id\": 2,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"Attiva\"\n        },\n        \"brand\": {\n            \"id\": 16,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Studebaker\"\n        }\n    },\n    {\n        \"id\": 28,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 30,\n        \"brand_id\": 23,\n        \"wheels\": 4,\n        \"model\": \"SHK\",\n        \"patent\": \"TY-03645\",\n        \"chassis\": \"convertible\",\n        \"km_traveled\": \"4453827\",\n        \"type\": {\n            \"id\": 30,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"Saima\"\n        },\n        \"brand\": {\n            \"id\": 23,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"TVR\"\n        }\n    },\n    {\n        \"id\": 29,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 27,\n        \"brand_id\": 7,\n        \"wheels\": 4,\n        \"model\": \"Minyi\",\n        \"patent\": \"NB-81770\",\n        \"chassis\": \"station_wagon\",\n        \"km_traveled\": \"3226165\",\n        \"type\": {\n            \"id\": 27,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"A310\"\n        },\n        \"brand\": {\n            \"id\": 7,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Ram\"\n        }\n    },\n    {\n        \"id\": 30,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 44,\n        \"brand_id\": 37,\n        \"wheels\": 4,\n        \"model\": \"H1 пасс.\",\n        \"patent\": \"DJ-17174\",\n        \"chassis\": \"small\",\n        \"km_traveled\": \"1073784\",\n        \"type\": {\n            \"id\": 44,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"Starlight\"\n        },\n        \"brand\": {\n            \"id\": 37,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Iran Khodro\"\n        }\n    },\n    {\n        \"id\": 31,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 41,\n        \"brand_id\": 47,\n        \"wheels\": 4,\n        \"model\": \"7\",\n        \"patent\": \"KQ-37134\",\n        \"chassis\": \"hatchback\",\n        \"km_traveled\": \"5531019\",\n        \"type\": {\n            \"id\": 41,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"HC\"\n        },\n        \"brand\": {\n            \"id\": 47,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Norster\"\n        }\n    },\n    {\n        \"id\": 32,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 29,\n        \"brand_id\": 12,\n        \"wheels\": 4,\n        \"model\": \"Mini\",\n        \"patent\": \"RQ-29086\",\n        \"chassis\": \"hatchback\",\n        \"km_traveled\": \"2344147\",\n        \"type\": {\n            \"id\": 29,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"RX 450\"\n        },\n        \"brand\": {\n            \"id\": 12,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Norster\"\n        }\n    },\n    {\n        \"id\": 33,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 6,\n        \"brand_id\": 14,\n        \"wheels\": 4,\n        \"model\": \"5\",\n        \"patent\": \"VE-44758\",\n        \"chassis\": \"sedan\",\n        \"km_traveled\": \"5035163\",\n        \"type\": {\n            \"id\": 6,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"7\"\n        },\n        \"brand\": {\n            \"id\": 14,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Jeep\"\n        }\n    },\n    {\n        \"id\": 34,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 36,\n        \"brand_id\": 10,\n        \"wheels\": 4,\n        \"model\": \"695\",\n        \"patent\": \"YJ-24260\",\n        \"chassis\": \"coupe\",\n        \"km_traveled\": \"3522174\",\n        \"type\": {\n            \"id\": 36,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"9-3\"\n        },\n        \"brand\": {\n            \"id\": 10,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Lotus\"\n        }\n    },\n    {\n        \"id\": 35,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 40,\n        \"brand_id\": 42,\n        \"wheels\": 4,\n        \"model\": \"Rover\",\n        \"patent\": \"SV-68840\",\n        \"chassis\": \"convertible\",\n        \"km_traveled\": \"2040210\",\n        \"type\": {\n            \"id\": 40,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"Gaucho\"\n        },\n        \"brand\": {\n            \"id\": 42,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Haima\"\n        }\n    },\n    {\n        \"id\": 36,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 10,\n        \"brand_id\": 42,\n        \"wheels\": 2,\n        \"model\": \"Hawk\",\n        \"patent\": \"KD-28842\",\n        \"chassis\": \"MPV\",\n        \"km_traveled\": \"3372091\",\n        \"type\": {\n            \"id\": 10,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"Maestro\"\n        },\n        \"brand\": {\n            \"id\": 42,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Haima\"\n        }\n    },\n    {\n        \"id\": 37,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 24,\n        \"brand_id\": 41,\n        \"wheels\": 2,\n        \"model\": \"Jetstar\",\n        \"patent\": \"KJ-69525\",\n        \"chassis\": \"MPV\",\n        \"km_traveled\": \"3249372\",\n        \"type\": {\n            \"id\": 24,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"9-3\"\n        },\n        \"brand\": {\n            \"id\": 41,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Yugo\"\n        }\n    },\n    {\n        \"id\": 38,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 31,\n        \"brand_id\": 6,\n        \"wheels\": 4,\n        \"model\": \"Steyr 55\",\n        \"patent\": \"FM-32422\",\n        \"chassis\": \"small\",\n        \"km_traveled\": \"1323523\",\n        \"type\": {\n            \"id\": 31,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"EX 37\"\n        },\n        \"brand\": {\n            \"id\": 6,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Isuzu\"\n        }\n    },\n    {\n        \"id\": 39,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 45,\n        \"brand_id\": 35,\n        \"wheels\": 2,\n        \"model\": \"630\",\n        \"patent\": \"UH-56188\",\n        \"chassis\": \"hatchback\",\n        \"km_traveled\": \"1490269\",\n        \"type\": {\n            \"id\": 45,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"H3\"\n        },\n        \"brand\": {\n            \"id\": 35,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Smart\"\n        }\n    },\n    {\n        \"id\": 40,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 22,\n        \"brand_id\": 23,\n        \"wheels\": 2,\n        \"model\": \"Aero\",\n        \"patent\": \"VG-63130\",\n        \"chassis\": \"SUV\",\n        \"km_traveled\": \"5178897\",\n        \"type\": {\n            \"id\": 22,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"Pony\"\n        },\n        \"brand\": {\n            \"id\": 23,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"TVR\"\n        }\n    },\n    {\n        \"id\": 41,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 21,\n        \"brand_id\": 29,\n        \"wheels\": 4,\n        \"model\": \"Telcoline\",\n        \"patent\": \"II-07376\",\n        \"chassis\": \"MPV\",\n        \"km_traveled\": \"1307510\",\n        \"type\": {\n            \"id\": 21,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"Ranger\"\n        },\n        \"brand\": {\n            \"id\": 29,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Acura\"\n        }\n    },\n    {\n        \"id\": 42,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 26,\n        \"brand_id\": 28,\n        \"wheels\": 6,\n        \"model\": \"F1\",\n        \"patent\": \"VG-63334\",\n        \"chassis\": \"sedan\",\n        \"km_traveled\": \"1250776\",\n        \"type\": {\n            \"id\": 26,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"City\"\n        },\n        \"brand\": {\n            \"id\": 28,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Koenigsegg\"\n        }\n    },\n    {\n        \"id\": 43,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 7,\n        \"brand_id\": 16,\n        \"wheels\": 4,\n        \"model\": \"30\",\n        \"patent\": \"WK-22672\",\n        \"chassis\": \"MPV\",\n        \"km_traveled\": \"2003846\",\n        \"type\": {\n            \"id\": 7,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"H2\"\n        },\n        \"brand\": {\n            \"id\": 16,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Studebaker\"\n        }\n    },\n    {\n        \"id\": 44,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 49,\n        \"brand_id\": 19,\n        \"wheels\": 4,\n        \"model\": \"GT\",\n        \"patent\": \"YD-93798\",\n        \"chassis\": \"hatchback\",\n        \"km_traveled\": \"444788\",\n        \"type\": {\n            \"id\": 49,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"RAM\"\n        },\n        \"brand\": {\n            \"id\": 19,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Ram\"\n        }\n    },\n    {\n        \"id\": 45,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 45,\n        \"brand_id\": 4,\n        \"wheels\": 2,\n        \"model\": \"Stromform\",\n        \"patent\": \"HK-71182\",\n        \"chassis\": \"sedan\",\n        \"km_traveled\": \"5999993\",\n        \"type\": {\n            \"id\": 45,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"H3\"\n        },\n        \"brand\": {\n            \"id\": 4,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Lexus\"\n        }\n    },\n    {\n        \"id\": 46,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 25,\n        \"brand_id\": 19,\n        \"wheels\": 4,\n        \"model\": \"S 1\",\n        \"patent\": \"TB-53551\",\n        \"chassis\": \"small\",\n        \"km_traveled\": \"4456677\",\n        \"type\": {\n            \"id\": 25,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"52\"\n        },\n        \"brand\": {\n            \"id\": 19,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Ram\"\n        }\n    },\n    {\n        \"id\": 47,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 30,\n        \"brand_id\": 2,\n        \"wheels\": 2,\n        \"model\": \"GX\",\n        \"patent\": \"OZ-15108\",\n        \"chassis\": \"SUV\",\n        \"km_traveled\": \"1985620\",\n        \"type\": {\n            \"id\": 30,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"Saima\"\n        },\n        \"brand\": {\n            \"id\": 2,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Isuzu\"\n        }\n    },\n    {\n        \"id\": 48,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 27,\n        \"brand_id\": 32,\n        \"wheels\": 6,\n        \"model\": \"Karma\",\n        \"patent\": \"TS-88326\",\n        \"chassis\": \"MPV\",\n        \"km_traveled\": \"4130980\",\n        \"type\": {\n            \"id\": 27,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"A310\"\n        },\n        \"brand\": {\n            \"id\": 32,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Jinbei Minibusus\"\n        }\n    },\n    {\n        \"id\": 49,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 20,\n        \"brand_id\": 3,\n        \"wheels\": 4,\n        \"model\": \"MP4\",\n        \"patent\": \"TL-85819\",\n        \"chassis\": \"sedan\",\n        \"km_traveled\": \"5388674\",\n        \"type\": {\n            \"id\": 20,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"Soren\"\n        },\n        \"brand\": {\n            \"id\": 3,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"JMC\"\n        }\n    },\n    {\n        \"id\": 50,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type_id\": 3,\n        \"brand_id\": 5,\n        \"wheels\": 2,\n        \"model\": \"Lioncel\",\n        \"patent\": \"CE-24325\",\n        \"chassis\": \"coupe\",\n        \"km_traveled\": \"3990071\",\n        \"type\": {\n            \"id\": 3,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"type\": \"Sandero StepWay\"\n        },\n        \"brand\": {\n            \"id\": 5,\n            \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n            \"brand\": \"Mitsubishi\"\n        }\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get vehicle by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/api/vehicles/1",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"api",
+								"vehicles",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get vehicle by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_base}}/api/vehicles/1",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"api",
+										"vehicles",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8902"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Dec 2022 13:44:49 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Dec 2022 13:44:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n    \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n    \"type_id\": 47,\n    \"brand_id\": 11,\n    \"wheels\": 4,\n    \"model\": \"Tiba\",\n    \"patent\": \"AY-63521\",\n    \"chassis\": \"MPV\",\n    \"km_traveled\": \"5782913\",\n    \"type\": {\n        \"id\": 47,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"type\": \"GT\"\n    },\n    \"brand\": {\n        \"id\": 11,\n        \"created_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"updated_at\": \"2022-12-28T12:12:23.000000Z\",\n        \"brand\": \"Thunder Tiger\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Add New Vehicle",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "type_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "wheels",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "brand_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "model",
+									"value": "OR70",
+									"type": "text"
+								},
+								{
+									"key": "patent",
+									"value": "PD-01dd109",
+									"type": "text"
+								},
+								{
+									"key": "chassis",
+									"value": "SUV",
+									"type": "text"
+								},
+								{
+									"key": "km_traveled",
+									"value": "480",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url_base}}/api/vehicles",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"api",
+								"vehicles"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add New Vehicle",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "type_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "wheels",
+											"value": "4",
+											"type": "text"
+										},
+										{
+											"key": "brand_id",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "model",
+											"value": "OR70",
+											"type": "text"
+										},
+										{
+											"key": "patent",
+											"value": "PD-01dd109",
+											"type": "text"
+										},
+										{
+											"key": "chassis",
+											"value": "SUV",
+											"type": "text"
+										},
+										{
+											"key": "km_traveled",
+											"value": "480",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url_base}}/api/vehicles",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"api",
+										"vehicles"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8902"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Dec 2022 13:46:40 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Dec 2022 13:46:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"type_id\": \"1\",\n    \"wheels\": \"4\",\n    \"brand_id\": \"2\",\n    \"model\": \"OR70\",\n    \"patent\": \"PD-01dd109\",\n    \"chassis\": \"SUV\",\n    \"km_traveled\": \"480\",\n    \"updated_at\": \"2022-12-28T13:46:40.000000Z\",\n    \"created_at\": \"2022-12-28T13:46:40.000000Z\",\n    \"id\": 51\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Vehicle by ID",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "type_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "wheels",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "brand_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "model",
+									"value": "OR70",
+									"type": "text"
+								},
+								{
+									"key": "patent",
+									"value": "PD-01dd109",
+									"type": "text"
+								},
+								{
+									"key": "chassis",
+									"value": "SUV",
+									"type": "text"
+								},
+								{
+									"key": "km_traveled",
+									"value": "4800",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url_base}}/api/vehicles/50",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"api",
+								"vehicles",
+								"50"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Vehicle",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url_base}}/api/vehicles/51",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"api",
+								"vehicles",
+								"51"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Vehicle",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{url_base}}/api/vehicles/51",
+									"host": [
+										"{{url_base}}"
+									],
+									"path": [
+										"api",
+										"vehicles",
+										"51"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8902"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Dec 2022 13:50:10 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 28 Dec 2022 13:50:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 51,\n    \"created_at\": \"2022-12-28T13:46:40.000000Z\",\n    \"updated_at\": \"2022-12-28T13:46:40.000000Z\",\n    \"type_id\": 1,\n    \"brand_id\": 2,\n    \"wheels\": 4,\n    \"model\": \"OR70\",\n    \"patent\": \"PD-01dd109\",\n    \"chassis\": \"SUV\",\n    \"km_traveled\": \"480\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Vehicles Brands",
+			"item": [
+				{
+					"name": "Brands List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/api/brands",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"api",
+								"brands"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Brands List with parameters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8902/api/brands?_end=10&_start=0&",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8902",
+							"path": [
+								"api",
+								"brands"
+							],
+							"query": [
+								{
+									"key": "_end",
+									"value": "10"
+								},
+								{
+									"key": "_start",
+									"value": "0"
+								},
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BRAND by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/api/brands/3",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"api",
+								"brands",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vehicles Types",
+			"item": [
+				{
+					"name": "Types List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/api/types",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"api",
+								"types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Types with parameters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8902/api/types?_end=10&_start=0&",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8902",
+							"path": [
+								"api",
+								"types"
+							],
+							"query": [
+								{
+									"key": "_end",
+									"value": "10"
+								},
+								{
+									"key": "_start",
+									"value": "0"
+								},
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TYPE  by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_base}}/api/types/3",
+							"host": [
+								"{{url_base}}"
+							],
+							"path": [
+								"api",
+								"types",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
