@@ -8,7 +8,8 @@ use App\Http\Requests\UpdateVecfleetVehicleRequest;
 // use App\Http\Resources\VecfleetVehicleResource;
 use App\Models\VecfleetVehicle;
 use Illuminate\Support\Facades\DB;
-use Symfony\Component\HttpFoundation\Request;
+// use Symfony\Component\HttpFoundation\Request;
+use Illuminate\Http\Request;
 
 // use Validator;
 
@@ -23,15 +24,44 @@ class VecfleetVehicleController extends BaseController
     {
         try {
             if ($request->get('_end') !== null) {
-                $limit = $request->get('_end');
+                //
+                $limit = $request->get('_end') ? $request->get('_end') : 10;
+                $offset = $request->get('_start') ? $request->get('_start') : 0;
+                //
                 $order = $request->get('_order') ? $request->get('_order') : 'asc';
                 $sort = $request->get('_sort') ?  $request->get('_sort') : 'id';
-                $offset = $request->get('_start') ? $request->get('_start') : 0;
-                // retireve ordered and limit vehicles list
-                $vehicles = VecfleetVehicle::with(['type', 'brand'])->orderBy($sort, $order)
-                    ->offset($offset)
-                    ->limit($limit)
-                    ->get();
+                //Filters
+                // capture full url 
+                $query_string = $request->getQueryString();
+                $query_string = $request->fullUrl();
+                $parsedUrl = parse_url($query_string);
+                // print_r($parsedUrl);
+                //cpature model filter 
+                $model = $request->get('model') ? $request->get('model') : '';
+                $separator = '&model=';
+                $strl = strlen($query_string);
+                $substring = substr($query_string, strpos($query_string,$separator, $strl));
+                $models_list = implode(',', explode($separator, $substring));
+                // echo "URL $query_string";// First model:  $model  //  Sunstring: $substring  //  Model List:  $models_list";
+                //capture brand filter
+                $brand_filter = $request->get('brand_id') ? $request->get('brand_id') : '';
+                //order
+                $sort_array = explode(',', $sort);
+                if (count($sort_array) > 0) {
+                    // retireve ordered and limit vehicles list
+                    $vehicles = VecfleetVehicle::with(['type', 'brand'])
+                        ->orderByRaw("COALESCE($sort)")
+                        ->offset($offset)
+                        ->limit($limit)
+                        ->get();
+                } else {
+                    // retireve ordered and limit vehicles list
+                    $vehicles = VecfleetVehicle::with(['type', 'brand'])
+                        ->orderBy($sort, $order)
+                        ->offset($offset)
+                        ->limit($limit)
+                        ->get();
+                }
             } else {
                 // retireve all vehicles
                 $vehicles = VecfleetVehicle::with(['type', 'brand'])->get();
@@ -98,19 +128,19 @@ class VecfleetVehicleController extends BaseController
             // if ($validator->fails()) {
             //     return $this->sendError('Validation Error.', $validator->errors());
             // } else {
-                $vehicle = VecfleetVehicle::find($id);
-                $vehicle->type_id = $input['type_id'];
-                $vehicle->wheels = $input['wheels'];
-                $vehicle->brand_id = $input['brand_id'];
-                $vehicle->model = $input['model'];
-                $vehicle->patent = $input['patent'];
-                $vehicle->chassis = $input['chassis'];
-                $vehicle->km_traveled = $input['km_traveled'];
-                //
-                $vehicle->save();
-                DB::commit();
-                return $this->sendResponse($vehicle, 'Vehicle updated successfully');
-                
+            $vehicle = VecfleetVehicle::find($id);
+            $vehicle->type_id = $input['type_id'];
+            $vehicle->wheels = $input['wheels'];
+            $vehicle->brand_id = $input['brand_id'];
+            $vehicle->model = $input['model'];
+            $vehicle->patent = $input['patent'];
+            $vehicle->chassis = $input['chassis'];
+            $vehicle->km_traveled = $input['km_traveled'];
+            //
+            $vehicle->save();
+            DB::commit();
+            return $this->sendResponse($vehicle, 'Vehicle updated successfully');
+
             // }
         } catch (\Exception $e) {
             DB::rollback();
