@@ -21,7 +21,7 @@ export const VList: React.FC<IResourceComponentsProps> = () => {
     initialSorter: [
       {
         field: "id",
-        order: "desc",
+        order: "asc",
       },
     ],
   });
