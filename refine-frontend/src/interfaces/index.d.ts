@@ -41,3 +41,10 @@ export interface IVType {
   updated_at: Date;
   type: string;
 }
+
+
+export interface IVehicleFilterVariables {
+  q: string;
+  model: string;
+  brand: string;
+}
