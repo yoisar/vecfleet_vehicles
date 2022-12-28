@@ -35,7 +35,7 @@ export const VList: React.FC<IResourceComponentsProps> = () => {
             value: q,
           },
           {
-            field: "brand.id",
+            field: "brand_id",
             operator: "eq",
             value: brand,
           },
