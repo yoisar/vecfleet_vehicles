@@ -1,5 +1,5 @@
-version: '2'
-name: vecfleet_vehicles
+# name: vecfleet_vehicles
+# version: '2'
 services:
   # db 
   vecfleet-vehicles-mariadb:
@@ -12,7 +12,7 @@ services:
       - MARIADB_USER=vecfleet
       - MARIADB_DATABASE=vecfleet
     volumes:
-      - './data:/bitnami/mariadb/data'
+      - 'mysqlData:/bitnami/mariadb/data'
     ports:
       - '8901:3306'
   # API 
@@ -55,3 +55,7 @@ services:
       - '8900:3000'
     depends_on:
       - vecfleet_vehicles-api
+  # Volumes
+volumes:
+  mysqlData:
+    driver: local
