@@ -18,10 +18,6 @@ yarn-error.log
 .vscode
 
 .DS_Store
-<<<<<<< Updated upstream
 node_modules/
-=======
-# api/v1/routes.txt
-node_modules/
+refine-examples/
 data/
->>>>>>> Stashed changes
